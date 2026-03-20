@@ -1,0 +1,237 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.5rem 0;
+  border-bottom: 1px solid transparent;
+}
+
+.headerScrolled {
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.85rem 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 2560px) {
+  .navContainer {
+    max-width: 2000px;
+  }
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (min-width: 1024px) {
+  .navContainer {
+    padding: 0 3rem;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Desktop: full text logo */
+.navbarLogoDesktop {
+  height: 140px;
+  width: auto;
+  margin: -46px 0;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s ease;
+  display: block;
+}
+
+/* Mobile: icon-only logo */
+.navbarLogoMobile {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s ease;
+  display: none;
+}
+
+.logoContainer:hover img {
+  opacity: 0.8;
+}
+
+/* Swap logos at tablet/mobile */
+@media (max-width: 768px) {
+  .navbarLogoDesktop {
+    display: none;
+  }
+  .navbarLogoMobile {
+    display: block;
+  }
+}
+
+.desktopNav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopNav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+}
+
+.navLink {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--foreground-muted);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.navLink:hover {
+  color: var(--foreground);
+  text-shadow: 0 0 10px rgba(1, 103, 149, 0.4);
+}
+
+.navLink.active {
+  color: var(--foreground);
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
+  border-radius: 2px;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-primary);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px var(--accent-primary);
+  border-radius: 2px;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.navLink.active::after {
+  display: none;
+}
+
+.cta {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+.mobileToggle {
+  display: block;
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .mobileToggle {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  /* Premium glassmorphism effect */
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(1, 103, 149, 0.2);
+  border-bottom: 1px solid rgba(1, 103, 149, 0.1);
+  padding: 1.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mobileNavLink {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: block;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  text-decoration: none;
+}
+
+.mobileNavLink:hover {
+  color: var(--accent-primary);
+  padding-left: 0.5rem;
+}
+
+.mobileNavLink.active {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.mobileCta {
+  margin-top: 1.5rem;
+  display: block;
+  text-align: center;
+  padding: 0.85rem 1.5rem;
+  background: var(--accent-primary);
+  color: white;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.mobileCta:hover {
+  background: #014d73;
+  transform: scale(1.02);
+}
+
+/* Swap logos at tablet/mobile */
+@media (max-width: 768px) {
+  .logoContainer {
+    max-width: 60vw;
+  }
+}
+

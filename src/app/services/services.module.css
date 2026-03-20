@@ -1,0 +1,303 @@
+.hero {
+  text-align: center;
+  margin-bottom: 2.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.heroCTA {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    text-align: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .heroCTA {
+    justify-content: center;
+  }
+}
+
+.heroText {
+  max-width: 850px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .main {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+  }
+}
+
+.cardsColumn {
+  width: 100%;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  width: 100%;
+  padding: 1.55rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 18px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.cardActive {
+  border-color: rgba(0, 174, 239, 0.45) !important;
+  box-shadow: 0 0 40px rgba(0, 174, 239, 0.15);
+}
+
+.cardOpen {
+  border-color: rgba(0, 174, 239, 0.45) !important;
+  box-shadow: 0 0 50px rgba(0, 174, 239, 0.14);
+}
+
+@media (min-width: 640px) {
+  /* Prevent "blank space next to expanded card" by spanning full width */
+  .cardOpen {
+    grid-column: 1 / -1;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  gap: 1.05rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.cardHeaderText {
+  flex: 1;
+}
+
+.cardToggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--foreground-muted);
+  flex: 0 0 auto;
+  margin-top: 0.15rem;
+}
+
+.cardTitle {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--foreground-muted);
+}
+
+.iconWrapper {
+  margin-bottom: 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cardBody {
+  margin-top: 0;
+  padding-top: 1.05rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.bodyLead {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--foreground-muted);
+  margin-bottom: 1rem;
+}
+
+.bodySection {
+  margin-bottom: 1.1rem;
+}
+
+.bodySubTitle {
+  font-size: 1.08rem;
+  font-weight: 850;
+  margin-bottom: 0.75rem;
+}
+
+.bodyList {
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.55rem;
+  color: var(--foreground-muted);
+}
+
+.bodyList li {
+  line-height: 1.6;
+}
+
+.bodyCTA {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .bodyCTA {
+    justify-content: flex-start;
+  }
+}
+
+.bottomCTA {
+  margin-top: 2.25rem;
+  padding: 1.8rem 1.5rem;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.bottomTitle {
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+.bottomLead {
+  color: var(--foreground-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.bottomCTAButtons {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.4rem;
+  width: 100%;
+}
+
+/* Keep centered alignment across breakpoints */
+
+.detailsColumn {
+  width: 100%;
+}
+
+.detailsPanel {
+  overflow: hidden;
+}
+
+.detailsContent {
+  padding: 1.8rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsTitle {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+}
+
+.detailsLead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--foreground-muted);
+  margin-bottom: 1.25rem;
+}
+
+.detailsListWrap {
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.detailsSubTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.detailsList {
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.6rem;
+  color: var(--foreground-muted);
+}
+
+.detailsList li {
+  line-height: 1.6;
+}
+
+.detailsCTA {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+/* Keep CTA centered on desktop too */

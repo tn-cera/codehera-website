@@ -1,0 +1,226 @@
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.heroActions {
+  margin-top: 1.75rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    text-align: center;
+  }
+
+  .heroActions {
+    justify-content: center;
+  }
+}
+
+.section {
+  margin-top: 1.5rem;
+}
+
+.sectionHead {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .sectionHead {
+    text-align: left;
+  }
+}
+
+.sectionTitle {
+  font-size: 2.3rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+}
+
+.rolesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .rolesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.roleCard {
+  padding: 1.9rem 1.5rem;
+  border-radius: 18px;
+  outline: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  user-select: none;
+}
+
+.roleCard:hover {
+  transform: translateY(-4px);
+}
+
+.roleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+
+.roleMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.roleType {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+/* Accordion-only styles removed (roles are always visible now) */
+
+.roleTitle {
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.roleLocation {
+  margin-top: 0.45rem;
+  color: var(--foreground-muted);
+}
+
+.roleBody {
+  margin-top: 1.1rem;
+  padding-top: 1.05rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.roleSection {
+  margin-bottom: 1.1rem;
+}
+
+.roleSubTitle {
+  font-size: 1.1rem;
+  font-weight: 900;
+  margin-bottom: 0.55rem;
+}
+
+.bullets {
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.55rem;
+  color: var(--foreground-muted);
+}
+
+.roleApply {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .roleApply {
+    justify-content: flex-start;
+  }
+}
+
+.internships {
+  margin-top: 2.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.internshipCard {
+  padding: 2.25rem 1.75rem;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.form {
+  margin-top: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.inputGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .inputGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--foreground);
+  outline: none;
+  text-align: left;
+}
+
+.input:focus {
+  border-color: rgba(0, 174, 239, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.18);
+}
+
+.textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--foreground);
+  outline: none;
+  resize: vertical;
+  text-align: left;
+}
+
+.textarea:focus {
+  border-color: rgba(0, 174, 239, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.18);
+}
+
+.formActions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+.formFallback {
+  margin: 0;
+  color: var(--foreground-muted);
+}
+
+.formFallback a {
+  font-weight: 800;
+}
