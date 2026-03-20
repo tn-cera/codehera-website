@@ -6,34 +6,39 @@ import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const hasSiteUrl = Boolean(siteUrl);
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: 'CodeHera | Engineering the Future of Intelligent Systems',
   description: 'Built for scale and performance. AI at the core of every system.',
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    type: 'website',
-    url: siteUrl,
-    title: 'CodeHera | Engineering the Future of Intelligent Systems',
-    description: 'Built for scale and performance. AI at the core of every system.',
-    siteName: 'CodeHera',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'CodeHera | Engineering the Future of Intelligent Systems',
-    description: 'Built for scale and performance. AI at the core of every system.',
-  },
+  ...(hasSiteUrl
+    ? {
+        metadataBase: new URL(siteUrl as string),
+        alternates: {
+          canonical: '/',
+        },
+        openGraph: {
+          type: 'website',
+          url: siteUrl,
+          title: 'CodeHera | Engineering the Future of Intelligent Systems',
+          description: 'Built for scale and performance. AI at the core of every system.',
+          siteName: 'CodeHera',
+        },
+        twitter: {
+          card: 'summary_large_image',
+          title: 'CodeHera | Engineering the Future of Intelligent Systems',
+          description: 'Built for scale and performance. AI at the core of every system.',
+        },
+      }
+    : {}),
 };
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'CodeHera Technologies',
-  url: siteUrl,
+  url: hasSiteUrl ? siteUrl : undefined,
   email: 'contact@codehera.in',
   sameAs: [
     'https://www.linkedin.com/company/code-hera',

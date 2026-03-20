@@ -1,8 +1,22 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
-  const base = siteUrl.replace(/\/$/, '');
+function getOrigin(req: NextRequest) {
+  // Prefer Next's computed origin (should be correct behind proxies).
+  const origin = req.nextUrl?.origin;
+  if (origin) return origin;
+
+  const host = (req.headers.get('x-forwarded-host') ?? req.headers.get('host'))?.trim();
+  const forwardedProto = req.headers.get('x-forwarded-proto');
+  const proto = (forwardedProto ? forwardedProto.split(',')[0].trim() : undefined) ?? 'https';
+
+  if (host) return `${proto}://${host}`.replace(/\/$/, '');
+
+  // Safe fallback for your current domain.
+  return 'https://www.codehera.in';
+}
+
+export async function GET(req: NextRequest) {
+  const base = getOrigin(req);
   const sitemapUrl = `${base}/sitemap.xml`;
 
   const body = [
