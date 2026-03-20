@@ -30,6 +30,7 @@
   justify-content: space-between;
   width: 100%;
   max-width: 1400px;
+  position: relative;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -155,6 +156,8 @@
   border: none;
   color: var(--foreground);
   cursor: pointer;
+  padding: 0.25rem;
+  z-index: 101;
 }
 
 @media (min-width: 768px) {
@@ -168,6 +171,7 @@
   top: 100%;
   left: 0;
   width: 100%;
+  z-index: 101;
   /* Premium glassmorphism effect */
   background: rgba(5, 5, 5, 0.95);
   backdrop-filter: blur(20px);
@@ -232,6 +236,22 @@
 @media (max-width: 768px) {
   .logoContainer {
     max-width: 60vw;
+  }
+
+  .header {
+    padding: 0.75rem 0;
+  }
+
+  .headerScrolled {
+    padding: 0.6rem 0;
+  }
+
+  .navContainer {
+    padding: 0 1rem;
+  }
+
+  .mobileMenu {
+    padding: 1rem 1rem 1.25rem;
   }
 }
 
