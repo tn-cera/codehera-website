@@ -25,7 +25,7 @@ export default function Footer() {
   /** Labels map to service section anchors on /services */
   const services: { label: string; href: string }[] = [
     { label: 'Web Development', href: '/services#web-platforms' },
-    { label: 'Data Science', href: '/services#big-data' },
+    { label: 'IT Staffing', href: '/services#it-staffing' },
     { label: 'Machine Learning', href: '/services#ai-development' },
     { label: 'Cloud Computing', href: '/services#cloud-engineering' },
     { label: 'Cybersecurity', href: '/services#cybersecurity' },
