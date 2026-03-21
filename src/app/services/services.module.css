@@ -82,6 +82,7 @@
 }
 
 .card {
+  scroll-margin-top: 6.5rem;
   width: 100%;
   padding: 1.55rem 1.4rem;
   display: flex;

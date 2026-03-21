@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Cpu, Globe, Cloud, Shield, Zap, Database, Users } from 'lucide-react';
 import Link from 'next/link';
 import styles from './services.module.css';
@@ -103,6 +103,23 @@ const services = [
 export default function ServicesPage() {
   const [openId, setOpenId] = useState<string | null>(services[0].id);
 
+  useEffect(() => {
+    const applyHash = () => {
+      const hash = typeof window !== 'undefined' ? window.location.hash.replace(/^#/, '') : '';
+      if (!hash) return;
+      const match = services.find((s) => s.id === hash);
+      if (!match) return;
+      setOpenId(hash);
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash);
+        el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    };
+    applyHash();
+    window.addEventListener('hashchange', applyHash);
+    return () => window.removeEventListener('hashchange', applyHash);
+  }, []);
+
   return (
     <div className="container py-24 min-h-screen pt-40">
       <motion.div
@@ -134,6 +151,7 @@ export default function ServicesPage() {
           return (
             <motion.div
               key={service.id}
+              id={service.id}
               role="listitem"
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}

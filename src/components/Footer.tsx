@@ -22,13 +22,14 @@ export default function Footer() {
     { name: 'Contact', path: '/contact' },
   ];
 
-  const services = [
-    'Web Development',
-    'Data Science',
-    'Machine Learning',
-    'Cloud Computing',
-    'Cybersecurity',
-    'Mobile Development',
+  /** Labels map to service section anchors on /services */
+  const services: { label: string; href: string }[] = [
+    { label: 'Web Development', href: '/services#web-platforms' },
+    { label: 'Data Science', href: '/services#big-data' },
+    { label: 'Machine Learning', href: '/services#ai-development' },
+    { label: 'Cloud Computing', href: '/services#cloud-engineering' },
+    { label: 'Cybersecurity', href: '/services#cybersecurity' },
+    { label: 'Mobile Development', href: '/services#web-platforms' },
   ];
 
   const socials = [
@@ -91,8 +92,10 @@ export default function Footer() {
             <h4 className={styles.colHeading}>Services</h4>
             <ul className={styles.linkList}>
               {services.map((s) => (
-                <li key={s}>
-                  <span className={styles.footerText}>{s}</span>
+                <li key={s.href}>
+                  <Link href={s.href} className={styles.footerLink}>
+                    {s.label}
+                  </Link>
                 </li>
               ))}
             </ul>

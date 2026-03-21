@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   title: 'CodeHera Technologies | IT Consulting & Software Development',
   description: 'Built for scale and performance. CodeHera delivers cutting-edge software development, cloud infrastructure, and AI solutions.',
   keywords: ['CodeHera', 'CodeHera Technologies', 'Code Hera', 'codehera.in', 'IT Services', 'Software Development Company', 'AI Solutions', 'Cloud Infrastructure'],
+  icons: {
+    icon: [{ url: '/codehera-logo-only.png', type: 'image/png' }],
+    shortcut: '/codehera-logo-only.png',
+    apple: '/codehera-logo-only.png',
+  },
   ...(hasSiteUrl
     ? {
         metadataBase: new URL(siteUrl as string),
