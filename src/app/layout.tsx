@@ -6,8 +6,11 @@ import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-const hasSiteUrl = Boolean(siteUrl);
+const defaultSite = 'https://www.codehera.in';
+const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? defaultSite).replace(/\/$/, '');
+
+const defaultDescription =
+  'CodeHera Technologies provides IT services and consulting: custom software development, cloud & DevOps, cybersecurity, data engineering, AI solutions, and IT staffing for organizations worldwide.';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -16,47 +19,54 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'CodeHera Technologies | IT Consulting & Software Development',
-  description: 'Built for scale and performance. CodeHera delivers cutting-edge software development, cloud infrastructure, and AI solutions.',
-  keywords: ['CodeHera', 'CodeHera Technologies', 'Code Hera', 'codehera.in', 'IT Services', 'Software Development Company', 'AI Solutions', 'Cloud Infrastructure'],
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: 'CodeHera Technologies | IT Services & Consulting',
+    template: '%s | CodeHera Technologies',
+  },
+  description: defaultDescription,
+  keywords: [
+    'CodeHera',
+    'CodeHera Technologies',
+    'IT services',
+    'IT consulting',
+    'software development',
+    'cloud consulting',
+    'DevOps',
+    'codehera.in',
+  ],
   icons: {
     icon: [{ url: '/codehera-logo-only.png', type: 'image/png' }],
     shortcut: '/codehera-logo-only.png',
     apple: '/codehera-logo-only.png',
   },
-  ...(hasSiteUrl
-    ? {
-        metadataBase: new URL(siteUrl as string),
-        alternates: {
-          canonical: '/',
-        },
-        openGraph: {
-          type: 'website',
-          url: siteUrl,
-          title: 'CodeHera | Engineering the Future of Intelligent Systems',
-          description: 'Built for scale and performance. AI at the core of every system.',
-          siteName: 'CodeHera',
-        },
-        twitter: {
-          card: 'summary_large_image',
-          title: 'CodeHera | Engineering the Future of Intelligent Systems',
-          description: 'Built for scale and performance. AI at the core of every system.',
-        },
-      }
-    : {}),
+  openGraph: {
+    type: 'website',
+    url: baseUrl,
+    siteName: 'CodeHera Technologies',
+    locale: 'en_IN',
+    title: 'CodeHera Technologies | IT Services & Consulting',
+    description: defaultDescription,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CodeHera Technologies | IT Services & Consulting',
+    description: defaultDescription,
+  },
 };
 
-// JSON-LD must always use absolute URLs (avoid "undefined/..." when env is missing locally).
-const jsonLdBase = (siteUrl ?? 'https://www.codehera.in').replace(/\/$/, '');
+const orgDescription =
+  'IT services and consulting company specializing in software development, cloud & DevOps, security, data engineering, AI, and IT staffing.';
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': `${jsonLdBase}/#organization`,
+      '@id': `${baseUrl}/#organization`,
       name: 'CodeHera Technologies',
-      url: jsonLdBase,
+      description: orgDescription,
+      url: baseUrl,
       email: 'contact@codehera.in',
       sameAs: [
         'https://www.linkedin.com/company/code-hera',
@@ -66,27 +76,28 @@ const structuredData = {
     },
     {
       '@type': 'WebSite',
-      '@id': `${jsonLdBase}/#website`,
-      url: jsonLdBase,
-      name: 'CodeHera',
+      '@id': `${baseUrl}/#website`,
+      url: baseUrl,
+      name: 'CodeHera Technologies',
+      description: defaultDescription,
       publisher: {
-        '@id': `${jsonLdBase}/#organization`
+        '@id': `${baseUrl}/#organization`,
       },
     },
     {
       '@type': 'SiteNavigationElement',
-      '@id': `${jsonLdBase}/#navigation`,
+      '@id': `${baseUrl}/#navigation`,
       name: ['Home', 'About Us', 'Services', 'Careers', 'Blogs', 'Contact Us'],
       url: [
-        `${jsonLdBase}/`,
-        `${jsonLdBase}/about`,
-        `${jsonLdBase}/services`,
-        `${jsonLdBase}/careers`,
-        `${jsonLdBase}/blogs`,
-        `${jsonLdBase}/contact`
-      ]
-    }
-  ]
+        `${baseUrl}/`,
+        `${baseUrl}/about`,
+        `${baseUrl}/services`,
+        `${baseUrl}/careers`,
+        `${baseUrl}/blogs`,
+        `${baseUrl}/contact`,
+      ],
+    },
+  ],
 };
 
 export default function RootLayout({
