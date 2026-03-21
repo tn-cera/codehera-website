@@ -90,8 +90,17 @@
   .desktopNav {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 1rem;
   }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navLink {
@@ -189,6 +198,14 @@
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+.mobileNavList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .mobileNavLink {

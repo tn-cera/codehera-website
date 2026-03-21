@@ -1,6 +1,8 @@
 .main {
   width: 100%;
   color: var(--foreground);
+  position: relative;
+  overflow: hidden;
 }
 
 .section {
@@ -194,6 +196,8 @@
 @media (max-width: 768px) {
   .heroTitle { font-size: 3rem; }
   .sectionTitle { font-size: 2.5rem; }
+  .section { padding: 6rem 1rem; }
+  .statsSection { padding: 0 1rem 4rem; }
 }
 
 @media (min-width: 2560px) {

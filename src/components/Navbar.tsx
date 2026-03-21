@@ -40,16 +40,19 @@ export default function Navbar() {
         
         {/* LINKS - Right Aligned */}
         <nav className={styles.desktopNav}>
-          {navLinks.map((link) => (
-            <Link 
-              key={link.path} 
-              href={link.path}
-              className={`${styles.navLink} ${pathname === link.path ? styles.active : ''}`}
-            >
-              {link.name}
-              {pathname === link.path && <span className={styles.activeIndicator} />}
-            </Link>
-          ))}
+          <ul className={styles.navList}>
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link 
+                  href={link.path}
+                  className={`${styles.navLink} ${pathname === link.path ? styles.active : ''}`}
+                >
+                  {link.name}
+                  {pathname === link.path && <span className={styles.activeIndicator} />}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <Link href="/contact" className={`btn btn-primary ${styles.cta}`}>Contact Us</Link>
         </nav>
 
@@ -65,16 +68,19 @@ export default function Navbar() {
       {/* Mobile Menu dropdown */}
       {isMobileMenuOpen && (
         <div className={styles.mobileMenu}>
-          {navLinks.map((link) => (
-            <Link 
-              key={link.path} 
-              href={link.path}
-              className={`${styles.mobileNavLink} ${pathname === link.path ? styles.active : ''}`}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
+          <ul className={styles.mobileNavList}>
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link 
+                  href={link.path}
+                  className={`${styles.mobileNavLink} ${pathname === link.path ? styles.active : ''}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <Link 
             href="/contact" 
             className={styles.mobileCta}
