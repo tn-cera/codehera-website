@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Mail, Linkedin, Instagram, Twitter } from 'lucide-react';
+import { Mail, Linkedin, Instagram, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import styles from './Footer.module.css';
 
@@ -35,7 +35,6 @@ export default function Footer() {
   const socials = [
     { icon: Linkedin, href: 'https://www.linkedin.com/company/code-hera', label: 'LinkedIn' },
     { icon: Instagram, href: 'https://www.instagram.com/codehera', label: 'Instagram' },
-    { icon: Twitter, href: 'https://twitter.com/codehera', label: 'Twitter' },
   ];
 
   return (
@@ -107,6 +106,10 @@ export default function Footer() {
             <div className={styles.contactItem}>
               <Mail size={16} color="var(--accent-primary)" />
               <a href="mailto:contact@codehera.in" className={styles.footerLink}>contact@codehera.in</a>
+            </div>
+            <div className={styles.contactItem}>
+              <MapPin size={16} color="var(--accent-primary)" />
+              <span className={styles.footerText}>Pune, Maharashtra, India</span>
             </div>
             <div className={styles.newsletter}>
               <p className={styles.newsletterText}>Stay updated with the latest in tech</p>
